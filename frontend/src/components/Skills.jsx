@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
 import LoadingSkeleton from "./LoadingSkeleton";
+import { FaJava, FaPython, FaJs, FaHtml5, FaCss3Alt, FaReact, FaGitAlt, FaDatabase } from "react-icons/fa";
+import { SiSpringboot, SiHibernate, SiFastapi, SiTailwindcss, SiMongodb, SiMysql, SiIntellijidea, SiPostman, SiJsonwebtokens, SiSocketdotio, SiEclipseide } from "react-icons/si";
+import { TbApi, TbLogicAnd } from "react-icons/tb";
+import { VscSymbolStructure } from "react-icons/vsc";
 
 export default function Skills({ data, loading }) {
     if (loading) {
@@ -30,6 +34,32 @@ export default function Skills({ data, loading }) {
         visible: { opacity: 1, y: 0 }
     };
 
+    const getIcon = (skillName) => {
+        const name = skillName.toLowerCase();
+        if (name.includes("java") && !name.includes("script")) return <FaJava className="text-orange-500" />;
+        if (name.includes("python")) return <FaPython className="text-blue-500" />;
+        if (name.includes("javascript")) return <FaJs className="text-yellow-400" />;
+        if (name.includes("html")) return <FaHtml5 className="text-orange-600" />;
+        if (name.includes("css")) return <FaCss3Alt className="text-blue-600" />;
+        if (name.includes("spring")) return <SiSpringboot className="text-green-500" />;
+        if (name.includes("hibernate")) return <SiHibernate className="text-gray-500" />;
+        if (name.includes("fastapi")) return <SiFastapi className="text-teal-500" />;
+        if (name.includes("react")) return <FaReact className="text-blue-400" />;
+        if (name.includes("tailwind")) return <SiTailwindcss className="text-cyan-400" />;
+        if (name.includes("mongo")) return <SiMongodb className="text-green-600" />;
+        if (name.includes("mysql")) return <SiMysql className="text-blue-500" />;
+        if (name.includes("intellij")) return <SiIntellijidea className="text-purple-500" />;
+        if (name.includes("eclipse")) return <SiEclipseide className="text-blue-800" />;
+        if (name.includes("git")) return <FaGitAlt className="text-red-500" />;
+        if (name.includes("postman")) return <SiPostman className="text-orange-500" />;
+        if (name.includes("jwt")) return <SiJsonwebtokens className="text-pink-500 text-lg" />;
+        if (name.includes("websocket")) return <SiSocketdotio className="text-gray-800 dark:text-white" />;
+        if (name.includes("rest")) return <TbApi className="text-green-600" />;
+        if (name.includes("oop")) return <VscSymbolStructure className="text-blue-500" />;
+        if (name.includes("dsa")) return <TbLogicAnd className="text-purple-600" />;
+        return <FaDatabase className="text-gray-400" />; // Default icon
+    };
+
     return (
         <section id="skills" className="py-20 bg-gray-50 dark:bg-slate-950 transition-colors">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,24 +88,16 @@ export default function Skills({ data, loading }) {
                             variants={itemVariants}
                             className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-slate-800"
                         >
-                            <h3 className="text-xl font-semibold text-gray-800 dark:text-blue-400 mb-4 pb-2 border-b border-gray-100 dark:border-slate-800">
-                                {category.category || category.title} {/* Handle potential naming diff between mock and API */}
+                            <h3 className="text-xl font-semibold text-gray-800 dark:text-blue-400 mb-6 pb-2 border-b border-gray-100 dark:border-slate-800">
+                                {category.category || category.title}
                             </h3>
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap gap-3">
                                 {category.items && category.items.map((skill, idx) => (
                                     <span
                                         key={idx}
-                                        className="px-3 py-1 bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors"
+                                        className="flex items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-slate-800/50 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium hover:bg-white dark:hover:bg-slate-800 border border-transparent hover:border-gray-200 dark:hover:border-slate-700 hover:shadow-md transition-all cursor-default"
                                     >
-                                        {skill}
-                                    </span>
-                                ))}
-                                {/* Handle older mock structure just in case */}
-                                {category.skills && category.skills.map((skill, idx) => (
-                                    <span
-                                        key={idx}
-                                        className="px-3 py-1 bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors"
-                                    >
+                                        <span className="text-lg">{getIcon(skill)}</span>
                                         {skill}
                                     </span>
                                 ))}
