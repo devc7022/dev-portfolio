@@ -23,11 +23,13 @@ export const usePortfolio = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080/api";
+
                 const [profileRes, skillsRes, expRes, projectsRes] = await Promise.all([
-                    axios.get("http://localhost:8080/api/profile"),
-                    axios.get("http://localhost:8080/api/skills"),
-                    axios.get("http://localhost:8080/api/experience"),
-                    axios.get("http://localhost:8080/api/projects")
+                    axios.get(`${API_URL}/profile`),
+                    axios.get(`${API_URL}/skills`),
+                    axios.get(`${API_URL}/experience`),
+                    axios.get(`${API_URL}/projects`)
                 ]);
 
                 setData({
