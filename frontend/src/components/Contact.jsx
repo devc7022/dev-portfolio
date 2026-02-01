@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Mail, MapPin, Send, Phone } from "lucide-react";
 import { useState } from "react";
+import axios from "axios";
 
 export default function Contact() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -10,14 +11,21 @@ export default function Contact() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Simulate API call
         setStatus("sending");
-        setTimeout(() => {
+
+        try {
+            const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+            const API_URL = import.meta.env.VITE_API_URL || (isLocal ? "http://localhost:8080/api" : "https://dev-portfolio-backend-rar3.onrender.com/api");
+
+            await axios.post(`${API_URL}/contact`, formData);
             setStatus("success");
             setFormData({ name: "", email: "", message: "" });
-        }, 1500);
+        } catch (error) {
+            console.error("Failed to send message", error);
+            setStatus("error");
+        }
     };
 
     return (
@@ -138,6 +146,9 @@ export default function Contact() {
                             </button>
                             {status === "success" && (
                                 <p className="text-green-500 text-center mt-2">Message sent successfully!</p>
+                            )}
+                            {status === "error" && (
+                                <p className="text-red-500 text-center mt-2">Failed to send message. Please try again.</p>
                             )}
                         </form>
                     </motion.div>
