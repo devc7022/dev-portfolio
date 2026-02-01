@@ -1,0 +1,27 @@
+# General
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+# Frontend (Node/React)
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+node_modules/
+dist/
+
+# Backend (Java/Spring Boot)
+backend/target/
+backend/*.class
+backend/*.jar
+backend/*.war
+backend/.settings/
+backend/.classpath
+backend/.project
+target/
+*.class
