@@ -69,7 +69,8 @@ export const usePortfolio = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080/api";
+                const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+                const API_URL = import.meta.env.VITE_API_URL || (isLocal ? "http://localhost:8080/api" : "https://dev-portfolio-backend-rar3.onrender.com/api");
 
                 const [profileRes, skillsRes, expRes, projectsRes] = await Promise.all([
                     axios.get(`${API_URL}/profile`),
