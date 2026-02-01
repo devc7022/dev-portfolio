@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send, Phone } from "lucide-react";
 import { useState } from "react";
 
 export default function Contact() {
@@ -66,6 +66,16 @@ export default function Contact() {
                             <div>
                                 <h4 className="font-medium text-gray-900 dark:text-white">Location</h4>
                                 <p className="text-gray-600 dark:text-gray-400">New Delhi, India</p>
+                            </div>
+                        </div>
+
+                        <div className="flex items-start space-x-4">
+                            <div className="bg-purple-100 dark:bg-slate-800 p-3 rounded-full text-purple-600 dark:text-purple-400">
+                                <Phone className="w-6 h-6" />
+                            </div>
+                            <div>
+                                <h4 className="font-medium text-gray-900 dark:text-white">Phone</h4>
+                                <p className="text-gray-600 dark:text-gray-400">+91 9650713556</p>
                             </div>
                         </div>
                     </motion.div>

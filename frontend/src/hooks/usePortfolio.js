@@ -10,9 +10,55 @@ const INITIAL_DATA = {
         about: "Loading about info...",
         socials: {}
     },
-    skills: [],
-    experience: [],
-    projects: []
+    skills: [
+        { category: "Languages", items: ["Java", "Python", "JavaScript", "HTML", "CSS"] },
+        { category: "Frameworks", items: ["Spring Boot", "Hibernate", "FastAPI"] },
+        { category: "Frontend", items: ["React.js", "Tailwind CSS"] },
+        { category: "Databases", items: ["MongoDB", "MySQL"] },
+        { category: "Tools", items: ["IntelliJ IDEA", "Eclipse", "Git", "Postman"] },
+        { category: "Concepts", items: ["OOP", "DSA", "REST APIs", "WebSocket", "JWT"] }
+    ],
+    experience: [
+        {
+            id: "1",
+            role: "Full-Stack Developer",
+            company: "Mobiloitte Pvt. Ltd.",
+            period: "Dec 2025 – Present",
+            description: "Working on AI Chatbots and Management Systems.",
+            achievements: [
+                "Built AI chatbot using LangChain and LangGraph",
+                "Automated customer queries, bookings, and service recommendations",
+                "Developed scalable REST APIs using FastAPI, Node.js, and authentication",
+                "Integrated ML models for intent detection and contextual responses"
+            ]
+        }
+    ],
+    projects: [
+        {
+            id: "1",
+            title: "Massage Parlour Management System with AI Chatbot",
+            description: "AI-driven management system with automated booking and queries.",
+            techStack: ["FastAPI", "Node.js", "LangChain", "React"],
+            githubLink: "#",
+            liveLink: "#"
+        },
+        {
+            id: "2",
+            title: "Real-Time Chat Application",
+            description: "Real-time messaging with WebSocket and MongoDB persistence.",
+            techStack: ["Java Spring Boot", "WebSocket", "MongoDB", "React", "Tailwind"],
+            githubLink: "https://github.com/devc7022/chat-app",
+            liveLink: "#"
+        },
+        {
+            id: "3",
+            title: "Car Rental System",
+            description: "Vehicle inventory management and booking workflow.",
+            techStack: ["Java", "MySQL", "JDBC"],
+            githubLink: "#",
+            liveLink: "#"
+        }
+    ]
 };
 
 export const usePortfolio = () => {
