@@ -24,6 +24,7 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(myEmail);
         message.setTo(myEmail); // Send to yourself
+        message.setReplyTo(request.email()); // Allow replying directly to the visitor
         message.setSubject("New Portfolio Contact: " + request.name());
         message.setText("Name: " + request.name() + "\n" +
                 "Email: " + request.email() + "\n\n" +
