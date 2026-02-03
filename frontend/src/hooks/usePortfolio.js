@@ -63,7 +63,7 @@ const INITIAL_DATA = {
 
 export const usePortfolio = () => {
     const [data, setData] = useState(INITIAL_DATA);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
